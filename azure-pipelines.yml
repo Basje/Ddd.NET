@@ -2,7 +2,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: DotnNetCoreCLI@2
+- task: DotNetCoreCLI@2
   displayName: 'Build the solution'
   inputs:
     command: build
