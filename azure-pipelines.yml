@@ -2,9 +2,16 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: dotnet build
-  displayName: 'Build the solution'
+- displayName: 'Build the solution'
+  task: DotnNetCoreCLI@2
+  inputs:
+    command: build
+    projects: '**/*.csproj'
+    arguments: '--configuration Release'
   
-- script: dotnet test
-  displayName: 'Test the solution'
-
+- displayName: 'Test the solution'
+  task: DotNetCoreCLI@2
+  inputs: 
+    command: test
+    projects: '**/tests/**/*.csproj'
+    arguments: '--configuration Release'
