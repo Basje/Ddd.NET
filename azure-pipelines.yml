@@ -1,0 +1,17 @@
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: DotNetCoreCLI@2
+  displayName: 'Build the solution'
+  inputs:
+    command: build
+    projects: '**/*.csproj'
+    arguments: '--configuration Release'
+  
+- task: DotNetCoreCLI@2
+  displayName: 'Test the solution'
+  inputs: 
+    command: test
+    projects: '**/tests/**/*.csproj'
+    arguments: '--configuration Release  --collect "Code coverage"'
